@@ -1,29 +1,95 @@
 void setup()
 {
-	noLoop();
+  background(0);
+  size(420, 450);
+  noLoop();
 }
 void draw()
 {
-	//your code here
+  background(0);
+  int sum = 0;
+  for(int r = 50; r<=320; r=r+110)
+  {
+    for(int c = 100; c<=370; c=c+110)
+    {
+      Die bob = new Die(r,c);
+      bob.roll();
+      bob.show();
+      sum = sum + bob.rollNum;
+    }
+  }
+  textSize(25);
+  fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+  text("sum: " + sum, 150,445);
+  textSize(50);
+  text("disco dice", 90,80);
+  
 }
 void mousePressed()
 {
-	redraw();
+  redraw();
 }
 class Die //models one single dice cube
 {
-	//variable declarations here
-	
-	Die(int x, int y) //constructor
-	{
-		//variable initializations here
-	}
-	void roll()
-	{
-		//your code here
-	}
-	void show()
-	{
-		//your code here
-	}
+  int myX;
+  int myY;
+  int rollNum;
+
+  Die(int x, int y) //constructor
+  {
+    roll();
+    myX=x;
+    myY=y;
+  }
+  void roll()
+  {
+    rollNum = (int)(Math.random()*6)+1;
+  }
+  void show()
+  {
+    noStroke();
+    fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+    rect(myX, myY, 100, 100, 10);
+
+    if (rollNum == 1)
+    {
+      fill(0);
+      ellipse(myX+50, myY+50, 10, 10);
+    } else if (rollNum == 2)
+    {
+      fill(0);
+      ellipse(myX+25, myY+25, 10, 10);
+      ellipse(myX+75, myY+75, 10, 10);
+    } else if (rollNum == 3)
+    {
+      fill(0);
+      ellipse(myX+25, myY+25, 10, 10);
+      ellipse(myX+75, myY+75, 10, 10);
+      ellipse(myX+50, myY+50, 10, 10);
+    } else if (rollNum == 4)
+    {
+      fill(0);
+      ellipse(myX+25, myY+25, 10, 10);
+      ellipse(myX+75, myY+75, 10, 10);
+      ellipse(myX+25, myY+75, 10, 10);
+      ellipse(myX+75, myY+25, 10, 10);
+    } else if (rollNum == 5)
+    {
+      fill(0);
+      ellipse(myX+50, myY+50, 10, 10);
+      ellipse(myX+25, myY+25, 10, 10);
+      ellipse(myX+75, myY+75, 10, 10);
+      ellipse(myX+25, myY+75, 10, 10);
+      ellipse(myX+75, myY+25, 10, 10);
+    } else if (rollNum == 6)
+    {
+      fill(0);
+      ellipse(myX+25, myY+50, 10, 10);
+      ellipse(myX+75, myY+50, 10, 10);
+      ellipse(myX+25, myY+25, 10, 10);
+      ellipse(myX+75, myY+75, 10, 10);
+      ellipse(myX+25, myY+75, 10, 10);
+      ellipse(myX+75, myY+25, 10, 10);
+    }
+  }
 }
