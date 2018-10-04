@@ -1,18 +1,19 @@
 void setup()
 {
   background(0);
-  size(420, 450);
-  noLoop();
+  size(560, 590);
 }
+int speed = 5;
 void draw()
 {
   background(0);
+  frameRate(speed);
   int sum = 0;
-  for(int r = 50; r<=320; r=r+110)
+  for (int r = 10; r<=500; r=r+110)
   {
-    for(int c = 100; c<=370; c=c+110)
+    for (int c = 10; c<=500; c=c+110)
     {
-      Die bob = new Die(r,c);
+      Die bob = new Die(r, c);
       bob.roll();
       bob.show();
       sum = sum + bob.rollNum;
@@ -20,14 +21,15 @@ void draw()
   }
   textSize(25);
   fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-  text("sum: " + sum, 150,445);
-  textSize(50);
-  text("disco dice", 90,80);
-  
+  text(sum, 265, 577);
 }
 void mousePressed()
 {
+  speed = speed + 15;
   redraw();
+}
+void keyPressed() {
+ speed=0;
 }
 class Die //models one single dice cube
 {
