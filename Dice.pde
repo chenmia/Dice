@@ -23,13 +23,14 @@ void draw()
   fill((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
   text(sum, 265, 577);
 }
-void mousePressed()
-{
-  speed = speed + 15;
+
+void mousePressed() {
+  if (mouseButton == LEFT) {
+      speed = speed + 15;
+  } else if (mouseButton == RIGHT) {
+    speed = 0;
+  }
   redraw();
-}
-void keyPressed() {
- speed=0;
 }
 class Die //models one single dice cube
 {
@@ -95,3 +96,4 @@ class Die //models one single dice cube
     }
   }
 }
+
