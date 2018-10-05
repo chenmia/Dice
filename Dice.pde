@@ -25,11 +25,7 @@ void draw()
 }
 
 void mousePressed() {
-  if (mouseButton == LEFT) {
-      speed = speed + 15;
-  } else if (mouseButton == RIGHT) {
-    speed = 0;
-  }
+  speed=speed+5;
   redraw();
 }
 class Die //models one single dice cube
